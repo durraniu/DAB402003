@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DAB402-003 Capstone Projects",
+    "section": "",
+    "text": "Class of DAB402-003"
+  },
+  {
+    "objectID": "index.html#project-details",
+    "href": "index.html#project-details",
+    "title": "DAB402-003 Capstone Projects",
+    "section": "Project Details",
+    "text": "Project Details\nProjects with a dropdown option contain a 5-minute video."
+  }
+]

@@ -1,0 +1,19 @@
+project:
+  type: website
+
+website:
+  title: "DAB402003"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme: vapor
+    css: styles.css
+    toc: true
+
+
+

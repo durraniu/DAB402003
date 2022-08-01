@@ -1,0 +1,220 @@
+---
+title: "DAB402-003 Capstone Projects"
+author: "Umair Durrani, Ph.D."
+format:
+  html:
+    theme: vapor
+    max-width: "2800px"
+editor: visual
+execute:
+  echo: false
+---
+  
+  
+![Class of DAB402-003](photo2.jpg)
+
+## Project Details
+
+Projects with a dropdown option contain a 5-minute video.
+
+
+```{r}
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(reactable))
+suppressPackageStartupMessages(library(htmltools))
+
+
+
+df <- tibble(
+  Group = 2:14,
+  Title = c(
+    "An Alternative Testing Method for\nPrediction of COVID-19 and other Lung Diseases\nusing Lung Ultrasound Imagery with Deep-learning", #2
+    "opendatawindsor - Development of an R Package\nfor Simplifying Access to Open Data Portal\nof the City Of Windsor", #3
+    "Proposing Mental-health Intervention Strategies\nbased on Client Intake Form Data", #4
+    "Data-driven Car Following Models", #5
+    "Development of ML models to Predict Client Emotions based on Facial\nEexpressions and Audio Input", #6
+    "Identifying Real-Time Roll off Truck States\nin Waste Management Industry", #7
+    "Pandemic Afflicted Racist Tweets Analysis", #8
+    "Fake News Detection using Machine Learning", #9
+    "Using Lung Ultrasound Images\nfor building a Reliable Point-of-Care\nCovid-19 Testing System", #10
+    "Face Mask Detection using\nMachine Learning", #11
+    "Spatial Data Analysis for\nthe City Of Windsor", #12
+    "Embryo Analysis to Improve\nSuccess Rate of IVF", #13
+    "Pedestrian Intention Prediction for\nAutonomous Driving"  #14
+  ),
+  GitHub = c(
+    "https://github.com/NSHAIK2/DAB402---Capstone-", #2
+    "https://github.com/JervisMurzello/opendatawindsor", #3
+    "https://github.com/0779258/DAB402_Group_4", #4
+    "https://github.com/VineetDhamija/DataDrivenCarFollowing", #5
+    "https://github.com/PranavJadhav611/CAPSTONE-PROJECT", #6
+    "https://github.com/kevinalbert14/Roll_Off", #7
+    "https://github.com/nikhjoshi11/Project", #8
+    "https://github.com/9mgill/Fake_News_detection_system", #9
+    "https://github.com/Sanketb77/Point-of-care-COVID_detection", #10
+    "https://github.com/DAB402", #11
+    "https://github.com/dilpresingh/capstone_geospatial_analysis_windsor", #12
+    "https://github.com/anjanapv/AI-ML-Project-Embryo-Analysis-to-Improve-Success-Rate-of-IVF", #13
+    "https://github.com/shreyasmahendra06/PedestrianPrediction"  #14
+  ),
+  `5-minute Presentation` = c(
+  "https://youtu.be/0iyh8tWzDqI", #2
+  "https://youtu.be/DeZeSsfGUKc", #3
+  "", #4
+  "https://youtu.be/Z009JSDk9HU", #5
+  "https://youtu.be/k5DTBayctPE", #6
+  "https://youtu.be/H47SKUpYTnw", #7
+  "", #8
+  "", #9
+  "", #10
+  "", #11
+  "", #12
+  "https://youtu.be/j1B8Wt6sia4", #13
+  ""  #14
+),
+  # `3-minute Presentation` = c(
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/ETDDfOqRMUZGieyp8wgYsCwB1tL949TxjH_C7IcH6uvpxQ?e=YDd7Rs", #2
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EXm9r-zZSjFNp6JnDACFz04Bk_6duJ36pJN7vQ4V8Oxx5A?e=OsGBWJ", #3
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EVGaiWFLQ_lCie3eimgw9rkB6YGNsDPitfjRCspisT3KOA?e=ers5tE", #4
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EfxdOhaBj7NJjW06hhBWI2gBI09ry26swQTO4tVp_XE4Ag?e=sOW752", #5
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EfKwDFOxZS9Mt9DICoTELjYBThgafTPUZgoCPriyEogNCA?e=JCwPVV", #6
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EedAKuCIp0JJuAtGuNvpQuAB76UwAz38Rjp_0WPVrFoc_Q?e=prAIlh", #7
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EWhRm-C_FwlLkmedblHeh9EBuYvTCHXoahb-a5q0EOFirQ?e=ANJ1px", #8
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/Ec3WmwJ8w0BItG1DBYNNZPgBsv0IwB5_gG2V_M48PFuW7g?e=y2uDr8", #9
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/ETHvMp3PjnJCm2JxQWn9wpMB7ch4HyiJaasq2nOC0G1dBg?e=uV3biO", #10
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/ERvvWZn9Pk5Io-V041vq7oABFBcvacM6IbQMK0Y_AGyVPA?e=qrkVb2", #11
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/Eez_QwPoJsJHl54s1yfCZ-wB2viIqdYzG6lZiDpoRzklcA?e=cIsYCb", #12
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/ETlduLPFwuxDlgYx78AEkD8BeIUUohF89X85KjQshKcBBg?e=M67aHU", #13
+  #   "https://stclairconnect-my.sharepoint.com/:v:/g/personal/udurrani_stclaircollege_ca/EYCRV7Ya7BtNkGtYnliyCb8BCeMT5lJHcqSQe13KskFrOg?e=fSzFOd"  #14
+  # ),
+    `3-minute Presentation` = c(
+    "https://youtu.be/JhFtPvq3Io0", #2
+    "https://youtu.be/cpJCQ7d4mlY", #3
+    "https://youtu.be/T_YFtsxCXX4", #4
+    "https://youtu.be/9ZNTKh2cUDg", #5
+    "https://youtu.be/Fh3LXmVFcu4", #6
+    "https://youtu.be/_spMJFETtrc", #7
+    "https://youtu.be/ERTdmfBAl7s", #8
+    "https://youtu.be/QVc4FevAlvQ", #9
+    "https://youtu.be/Awok7mtIzEE", #10
+    "https://youtu.be/Sn_rfuhgI70", #11
+    "https://youtu.be/smPGDzV009s", #12
+    "https://youtu.be/fyl-9IhW-Zc", #13
+    "https://youtu.be/jAmak6aFfvk"  #14
+  ),
+  Report = c(
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EWB3W_qZnRJCi4kVFdQhKlQBOLFpeEqpBm5shm7B64Tchw?e=T0mR4h", #2
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EbQ69yo4mW5KnEhZS09Jhh8BPYmi3Tp8mrIZkoMEsMGX3w?e=ZIP82W", #3
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/Edb5-OY3IyFArcGJgMchwQwBardbrZfbCB1wPhXtCTMpuw?e=8DMO7y", #4
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EbEbclQJyFxJp-LFWvvIuMcBiaPyhRwrJ8eZMfON64lEHQ?e=YPWQq0", #5
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EVz-avwkSnBDpRkNtLs8L3YBk396QbTaX_rHpou_ubn4Fw?e=Dtu2lx", #6
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EXQLZDhhK-RMmnEPxOBVLDgBFhY_ECo2HiMCXk1Zb9jT1A?e=Li91h3", #7
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EbXl1Ahu0l5GsaUnRk8TVVUBSewOEGR7_F6jRJowIRNnKw?e=utJwBn", #8
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EU8B5aPDkCtGv91uFk2qidUB9bPS6dop-3zTBS_ZH60_KA?e=YXshm4", #9
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EbUuJX4IsFROkwksuTTHcS4BXNztfyXFkd4I_QSt1ov1vg?e=NMZXD3", #10
+    "https://stclairconnect-my.sharepoint.com/:w:/g/personal/udurrani_stclaircollege_ca/ESnajLN4cOFOkPuHqxSFq9wBJnjfDLNBzqxat_lwodOixA?e=MV2edY", #11
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EVGSwgwdmytBgmD0-ae_77MBKQO8tBBPQbc41uLE_8-ESw?e=yBLlay", #12
+    "https://stclairconnect-my.sharepoint.com/:b:/g/personal/udurrani_stclaircollege_ca/EWWaa5sjKjBCrf0gFc35uvMBjmfR7G93NhSq7QQoazW4TQ?e=ILJM0n", #13
+    "https://stclairconnect-my.sharepoint.com/:w:/g/personal/udurrani_stclaircollege_ca/EdYnSakVBGtNt8HQhm5IYcgBaoiwKzwQ-9rZO_T20V-jew?e=c2wpcC" #14
+  )
+)
+
+
+
+df <- df %>% 
+  mutate(ffs = stringr::str_extract(`5-minute Presentation`, '(?<=/)[\\w]+/?(?:$|\\?)'))
+
+# df
+```
+
+```{r}
+# theme <- reactableTheme(
+#   style = list(".dark &" = list(color = "#fff", background = "#282a36")),
+#   cellStyle = list(".dark &" = list(borderColor = "rgba(255, 255, 255, 0.15)")),
+#   headerStyle = list(".dark &" = list(borderColor = "rgba(255, 255, 255, 0.15)")),
+#   paginationStyle = list(".dark &" = list(borderColor = "rgba(255, 255, 255, 0.15)")),
+#   rowHighlightStyle = list(".dark &" = list(background = "rgba(255, 255, 255, 0.04)")),
+#   pageButtonHoverStyle = list(".dark &" = list(background = "rgba(255, 255, 255, 0.08)")),
+#   pageButtonActiveStyle = list(".dark &" = list(background = "rgba(255, 255, 255, 0.1)"))
+# )
+
+# Set the default theme for all tables
+options(reactable.theme = reactableTheme(
+  color = "hsl(233, 9%, 87%)",
+  backgroundColor = "hsl(233, 9%, 19%)",
+  borderColor = "hsl(233, 9%, 22%)",
+  stripedColor = "hsl(233, 12%, 22%)",
+  highlightColor = "hsl(233, 12%, 24%)",
+  inputStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  selectStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonHoverStyle = list(backgroundColor = "hsl(233, 9%, 25%)"),
+  pageButtonActiveStyle = list(backgroundColor = "hsl(233, 9%, 28%)")
+))
+```
+
+```{r}
+tbl <- reactable(
+  data = df,
+  
+  
+    # Function to embed Youtube Video 
+  details = function(index){
+    
+    if (index %in% c(1:2, 4:6, 12)) {
+    
+    # Grab video info from hidden columns
+    link <- df$ffs[index]
+
+    
+    # Div container to add grey padding around the video
+    tags$div(style = "text-align:center; padding:10px; background:grey",
+             
+             # The actual video
+             tags$iframe(
+               height = "640", width = "640", allow = "fullscreen",
+               src = glue::glue("https://www.youtube.com/embed/{link}")
+             )
+             
+    )
+    }
+  },
+  
+  highlight = TRUE, 
+  defaultPageSize = 15,
+  # theme = theme,
+  compact    = TRUE, # for minimum row height
+  filterable = TRUE, # for individual column filters
+  striped    = TRUE, # banded rows
+  resizable  = TRUE, # for resizable column widths
+  columns = list(
+    `5-minute Presentation` = colDef(show = F),
+    ffs = colDef(show = F),
+    Title = colDef(width=200),
+    GitHub = colDef(cell = function(value) {
+      # Render as a link
+      url <- sprintf(value)
+      htmltools::tags$a(href = url, target = "_blank", "Link")
+    }),
+    `3-minute Presentation` = colDef(cell = function(value) {
+      # Render as a link
+      url <- sprintf(value)
+      htmltools::tags$a(href = url, target = "_blank", "YouTube")
+    }),
+    Report = colDef(cell = function(value) {
+      # Render as a link
+      url <- sprintf(value)
+      htmltools::tags$a(href = url, target = "_blank", "Link")
+    })
+  )
+)
+
+tbl
+# Simple theme toggle button
+# tags$button(onclick = "document.querySelector('.themeable-tbl').classList.toggle('dark')",
+#             "Toggle light/dark")
+# 
+# # Start with the dark theme enabled
+# div(class = "themeable-tbl dark", tbl)
+
+```
